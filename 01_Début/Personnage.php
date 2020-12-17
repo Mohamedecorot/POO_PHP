@@ -4,10 +4,10 @@ class Personnage{
 
     const MAX_VIE = 100;
 
-    private $vie = 80;
-    private $atk = 20;
-    private $name;
-    private $age = 30;
+    protected $vie = 80;
+    protected $atk = 20;
+    protected $name;
+    protected $age = 30;
 
     public function __construct($nom)
     {

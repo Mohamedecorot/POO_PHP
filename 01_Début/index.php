@@ -1,7 +1,9 @@
 <?php
 require 'Personnage.php';
+require 'Archer.php';
 
 $merlin = new Personnage("Merlin");
+$legolas = new Archer('Legolas');
 
 // Si on veut faire crier le personnage :
 $merlin->crier();
