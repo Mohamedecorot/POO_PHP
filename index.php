@@ -7,9 +7,11 @@ $merlin = new Personnage("Merlin");
 $merlin->crier();
 
 //Si on veut attribuer une nouvelle valeur à une propriété
-$merlin->vie = 100;
+//$merlin->vie = 100;
 //ou
 $merlin->regenerer(5);
+
+echo $merlin->getVie();
 
 //si on a un nouvel objet (personnage), il est indépendant des autres objets
 
