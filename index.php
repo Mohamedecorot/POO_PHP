@@ -9,10 +9,8 @@
 <body>
 
 <?php
-
-require 'form.php';
-require 'text.php';
-require 'BootstrapForm.php';
+require 'class/Autoloader.php';
+Autoloader::register();
 
 $form = new BootstrapForm($_POST);
 //var_dump(Text::publicwithZero(4));
