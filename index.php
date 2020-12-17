@@ -1,8 +1,10 @@
 <?php
 
 require 'form.php';
+require 'text.php';
 
 $form = new Form($_POST);
+var_dump(Text::publicwithZero(4));
 ?>
 
 <form action="#" method="post">

@@ -2,6 +2,8 @@
 
 class Personnage{
 
+    const MAX_VIE = 100;
+
     private $vie = 80;
     private $atk = 20;
     private $name;
@@ -47,7 +49,7 @@ class Personnage{
     {
         if(is_null($vie)) {
             //$this faire référence à l'instance en cours
-            $this->vie = 100;
+            $this->vie = self::MAX_VIE;
         } else {
             $this->vie = $this->vie + $vie;
             // équivalent à $this->vie += $vie;
