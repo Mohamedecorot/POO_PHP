@@ -28,3 +28,5 @@ if($harry->mort()) {
 } else {
     echo 'Harry a survécu avec ' . $harrt->vie . ' de vie';
 }
+
+//test de configuration
