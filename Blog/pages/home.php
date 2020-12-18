@@ -14,9 +14,11 @@
 // $resultat = $pdo->query('SELECT * FROM articles');
 // $datas = $resultat->fetchAll(PDO::FETCH_OBJ);
 // var_dump($datas[0]->titre);
+?>
 
-use App\Database;
-
-$db = new Database('blog');
-$datas = $db->query('SELECT * FROM articles');
-var_dump($datas);
+<ul>
+  <?php foreach ($db->query('SELECT * FROM articles', 'App\Table\Article') as $post): ?>
+    <h2><a href="<?= $post->getURL() ?>"><?= $post->titre; ?></a></h2>
+    <p><?= $post->getExtrait(); ?></h2></p>
+  <?php endforeach ?>
+</ul>

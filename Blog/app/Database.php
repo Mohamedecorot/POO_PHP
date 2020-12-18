@@ -19,11 +19,11 @@ class Database{
         $this->db_host = $db_host;
     }
 
-    public function query($statement)
+    public function query($statement, $class_name)
     {
         $resultat = $this->getPDO()->query($statement);
         //pour récuperer les articles
-        $datas = $resultat->fetchAll(PDO::FETCH_OBJ);
+        $datas = $resultat->fetchAll(PDO::FETCH_CLASS, $class_name);
         return $datas;
     }
 
