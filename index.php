@@ -9,6 +9,9 @@
 <body>
 
 <?php
+
+use Tutoriel\Autoloader;
+use Tutoriel\BootstrapForm;
 require 'class/Autoloader.php';
 Autoloader::register();
 

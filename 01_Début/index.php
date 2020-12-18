@@ -1,6 +1,10 @@
 <?php
-require 'Personnage.php';
-require 'Archer.php';
+namespace Tutoriel;
+
+use Tutoriel\Autoloader;
+use Tutoriel\Personnage;
+require 'class/Autoloader.php';
+Autoloader::register();
 
 $merlin = new Personnage("Merlin");
 $legolas = new Archer('Legolas');
