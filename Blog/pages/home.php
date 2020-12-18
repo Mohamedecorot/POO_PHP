@@ -18,7 +18,7 @@
 
 <ul>
   <?php foreach ($db->query('SELECT * FROM articles', 'App\Table\Article') as $post): ?>
-    <h2><a href="<?= $post->getURL() ?>"><?= $post->titre; ?></a></h2>
-    <p><?= $post->getExtrait(); ?></h2></p>
+    <h2><a href="<?= $post->url ?>"><?= $post->titre; ?></a></h2>
+    <p><?= $post->extrait; ?></h2></p>
   <?php endforeach ?>
 </ul>
