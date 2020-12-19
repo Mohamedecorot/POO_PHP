@@ -1,6 +1,8 @@
 <h1>Homepage</h1>
 <p><a href="index.php?p=single">Single</a></p>
 <?php
+
+use App\App;
 //pour se connecter à la bdd
 // $pdo = new PDO ('mysql:dbname=blog;host=localhost', 'root', 'root');
 
@@ -17,7 +19,7 @@
 ?>
 
 <ul>
-  <?php foreach ($db->query('SELECT * FROM articles', 'App\Table\Article') as $post): ?>
+  <?php foreach (App::getDb()->query('SELECT * FROM articles', 'App\Table\Article') as $post): ?>
     <h2><a href="<?= $post->url ?>"><?= $post->titre; ?></a></h2>
     <p><?= $post->extrait; ?></h2></p>
   <?php endforeach ?>

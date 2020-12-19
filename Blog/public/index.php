@@ -13,7 +13,7 @@ if(isset($_GET['p'])){
 }
 
 // Initialisation de la bdd
-$db = new Database('blog');
+//$db = new Database('blog');
 
 
 ob_start();
