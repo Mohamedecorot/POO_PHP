@@ -29,6 +29,8 @@ class Database{
 
     private function getPDO()
     {
+        $pdo = new PDO ('mysql:dbname=blog;host=localhost', 'root', 'root');
+
         if($this->pdo === null) {
             //pour se connecter à la bdd
             $pdo = new PDO ('mysql:dbname=blog;host=localhost', 'root', 'root');

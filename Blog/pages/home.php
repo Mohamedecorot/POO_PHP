@@ -2,8 +2,8 @@
 <p><a href="index.php?p=single">Single</a></p>
 <?php
 
-use App\Table\Article;
-use App\Table\Categorie;
+// use App\Table\Article;
+// use App\Table\Categorie;
 //pour se connecter à la bdd
 // $pdo = new PDO ('mysql:dbname=blog;host=localhost', 'root', 'root');
 
@@ -21,7 +21,7 @@ use App\Table\Categorie;
 
 <div class="row">
   <div class="col-sm-8">
-    <?php foreach (Article::getLast() as $post): ?>
+    <?php foreach (\App\Table\Article::getLast() as $post): ?>
       <h2><a href="<?= $post->url ?>"><?= $post->titre; ?></a></h2>
       <p><em><?= $post->categorie; ?></em></p>
       <p><?= $post->extrait; ?></h2></p>
@@ -29,7 +29,7 @@ use App\Table\Categorie;
   </div>
   <div class="col-sm-4">
     <ul>
-      <?php foreach(Categorie::all() as $categorie): ?>
+      <?php foreach(\App\Table\Categorie::all() as $categorie): ?>
         <li><a href="<?= $categorie->url; ?>"><?= $categorie->titre; ?></a></li>
       <?php endforeach; ?>
     </ul>
