@@ -1,5 +1,6 @@
 <?php
 
+use App\Database;
 use App\Autoloader;
 
 require '../app/Autoloader.php';
@@ -11,8 +12,8 @@ if(isset($_GET['p'])){
     $p = 'home';
 }
 
-// Initialisation de la bdd
-//$db = new Database('blog');
+//Initialisation de la bdd
+$db = new Database('blog');
 
 
 ob_start();
