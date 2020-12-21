@@ -19,7 +19,7 @@ $db = new Database('blog');
 ob_start();
 if($p === 'home') {
     require '../pages/home.php';
-} elseif ($p === 'single') {
+} elseif ($p === 'article') {
     require '../pages/single.php';
 } elseif ($p === 'categorie') {
     require '../pages/categorie.php';
