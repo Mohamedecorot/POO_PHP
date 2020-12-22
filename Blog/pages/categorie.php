@@ -6,7 +6,7 @@ use App\Table\Categorie;
 
 $categorie = Categorie::find($_GET['id']);
 if($categorie === false) {
-    //App::notFound();
+    App::notFound();
 }
 
 $articles = Article::lastByCategory($_GET['id']);
