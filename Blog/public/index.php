@@ -13,7 +13,7 @@ if (isset($_GET['p'])) {
 }
 
 //initialisation des objets
-$db = new Database('blog');
+//$db = new Database('blog');
 
 ob_start();
 if($p === 'home') {
