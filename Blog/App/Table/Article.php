@@ -5,14 +5,26 @@ use App\App;
 
 class Article extends Table{
 
-    public static function getLast()
+
+    public static function lastByCategory($category_id)
     {
-        return App::getDb()->query("
+        return self::query("
         SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
         FROM articles
         LEFT JOIN categories
             ON category_id = categories.id
-        ", __CLASS__);
+        WHERE category_id = ?
+        ", [$category_id]);
+    }
+
+    public static function getLast()
+    {
+        return self::query("
+        SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+        FROM articles
+        LEFT JOIN categories
+            ON category_id = categories.id
+        ");
     }
 
     public function getURL()

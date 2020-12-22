@@ -7,6 +7,24 @@ class Table {
 
     protected static $table;
 
+    public static function query($statement, $attributes = null, $one = false)
+    {
+        if ($attributes) {
+            return App::getDb()->prepare($statement, $attributes, get_called_class(), $one);
+        } else {
+            return App::getDb()->query($statement, get_called_class(), $one);
+        }
+    }
+
+    public static function find($id)
+    {
+        return App::getDb()->prepare("
+        SELECT *
+        FROM " . static::getTable() ."
+        WHERE id = ?
+        ", [$id], get_called_class(), true);
+    }
+
     private static function getTable()
     {
         if(static::$table === null) {
