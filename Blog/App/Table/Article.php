@@ -14,4 +14,12 @@ class Article {
         $html .= '<p><a href="' . $this->getURL() . '">Voir la suite</a></p>';
         return $html;
     }
+
+    public function __get($key)
+    {
+        //methode magique
+        $method = 'get' . ucfirst($key);
+        $this->$key = $this->$method();
+        return $this->$key;
+    }
 }
