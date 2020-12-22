@@ -7,12 +7,21 @@ class Table {
 
     protected static $table;
 
+    private static function getTable()
+    {
+        if(static::$table === null) {
+            $class_name = explode('\\', get_called_class());
+            static::$table = strtolower(end($class_name)) . 's';
+        }
+        //die (static::$table);
+        return static::$table;
+    }
 
     public static function all()
     {
         return App::getDb()->query("
         SELECT *
-        FROM " . static::$table ."
+        FROM " . static::getTable() ."
         ", get_called_class());
     }
 
