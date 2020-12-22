@@ -32,11 +32,11 @@ class Database{
         return $this->pdo;
     }
 
-    public function query($statement)
+    public function query($statement, $classname)
     {
         //pour récuperer les articles
         $req = $this->getPDO()->query($statement);
-        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, $classname);
         return $datas;
     }
 
