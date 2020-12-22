@@ -3,17 +3,13 @@ namespace App\Table;
 
 use App\App;
 
-class Categorie {
+class Categorie extends Table{
 
-    private static $table = 'categories';
+    protected static $table = 'categories';
 
-    public static function all()
+    public function getURL()
     {
-        return App::getDb()->query("
-        SELECT *
-        FROM " . static::$table ."
-        ", get_called_class());
+        return 'index.php?p=categorie&id=' . $this->id;
     }
-
 
 }
