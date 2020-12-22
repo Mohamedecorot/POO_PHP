@@ -1,5 +1,6 @@
 <?php
 
+use App\Database;
 use App\Autoloader;
 
 require '../App/Autoloader.php';
@@ -10,6 +11,9 @@ if (isset($_GET['p'])) {
 } else {
     $p = 'home';
 }
+
+//initialisation des objets
+$db = new Database('blog');
 
 ob_start();
 if($p === 'home') {
