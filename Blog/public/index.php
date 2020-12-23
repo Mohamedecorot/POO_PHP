@@ -27,4 +27,7 @@ Autoloader::register();
 // $content = ob_get_clean();
 // require '../pages/templates/default.php';
 
-$config = App\Config::getInstance();
+//$config = App\Config::getInstance();
+
+$app = App\App::getInstance();
+$app->titre = "titre test";
