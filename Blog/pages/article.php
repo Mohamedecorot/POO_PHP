@@ -10,10 +10,9 @@ if($post === false) {
     App::notFound();
 }
 App::setTitle($post->titre);
-$categorie = Categorie::find($post->category_id);
 ?>
 
 
 <h1><?= $post->titre; ?></h1>
-<p><em><?= $categorie->titre; ?></em></p>
+<p><em><?= $post->categorie; ?></em></p>
 <p><?= $post->contenu; ?></p>

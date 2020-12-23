@@ -6,14 +6,24 @@ use App\App;
 class Article extends Table{
 
 
+    public static function find($id)
+    {
+        return self::query("
+        SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+        FROM articles
+        LEFT JOIN categories ON category_id = categories.id
+        WHERE articles.id = ?
+        ", [$id], true);
+    }
+
     public static function lastByCategory($category_id)
     {
         return self::query("
         SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
         FROM articles
-        LEFT JOIN categories
-            ON category_id = categories.id
+        LEFT JOIN categories ON category_id = categories.id
         WHERE category_id = ?
+        ORDER BY articles.date DESC
         ", [$category_id]);
     }
 
@@ -22,8 +32,8 @@ class Article extends Table{
         return self::query("
         SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
         FROM articles
-        LEFT JOIN categories
-            ON category_id = categories.id
+        LEFT JOIN categories ON category_id = categories.id
+        ORDER BY articles.date DESC
         ");
     }
 
