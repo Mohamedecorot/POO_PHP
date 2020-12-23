@@ -1,6 +1,6 @@
 <?php
 namespace App\Table;
 
-class Table {
+class UsersTable extends Table {
 
 }
