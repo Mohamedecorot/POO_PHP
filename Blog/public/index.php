@@ -1,9 +1,9 @@
 <?php
 
-use App\Autoloader;
+// use App\Autoloader;
 
-require '../App/Autoloader.php';
-Autoloader::register();
+// require '../App/Autoloader.php';
+// Autoloader::register();
 
 // if (isset($_GET['p'])) {
 //     $p = $_GET['p'];
@@ -32,7 +32,9 @@ Autoloader::register();
 //$app = App\App::getInstance();
 //$app->titre = "titre test";
 
-$app = App\App::getInstance();
-
+define('ROOT', dirname(__DIR__));
+require ROOT . '/app/App.php';
+App::load();
+$app = App::getInstance();
 $posts = $app->getTable('Posts');
 var_dump($posts->all());

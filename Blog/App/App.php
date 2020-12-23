@@ -1,15 +1,23 @@
 <?php
-namespace App;
 
-use App\Config;
-use App\Database;
-use App\Database\MysqlDatabase;
+use Core\Config;
+use Core\Database\MysqlDatabase;
 
 class App{
 
     private static $_instance;
     public $title = "Mon blog";
     private $db_instance;
+
+    public static function load()
+    {
+        session_start();
+        require ROOT . '/app/Autoloader.php';
+        App\Autoloader::register();
+        require ROOT . '/Core/Autoloader.php';
+        Core\Autoloader::register();
+    }
+
 
     // Singleton
     public static function getInstance(){
@@ -28,7 +36,7 @@ class App{
 
     public function getDb()
     {
-        $config = Config::getInstance();
+        $config = Config::getInstance(ROOT . '/config/config.php');
         if(is_null($this->db_instance)){
             return new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
         }
