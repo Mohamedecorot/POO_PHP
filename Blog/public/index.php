@@ -29,5 +29,9 @@ Autoloader::register();
 
 //$config = App\Config::getInstance();
 
+//$app = App\App::getInstance();
+//$app->titre = "titre test";
+
 $app = App\App::getInstance();
-$app->titre = "titre test";
+
+$posts = $app->getTable('Posts');
