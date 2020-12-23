@@ -12,7 +12,7 @@ class Config {
     }
 
 
-    private static function getInstance()
+    public static function getInstance()
     {
         if(is_null(self::$_instance)){
             self::$_instance = new Config();
