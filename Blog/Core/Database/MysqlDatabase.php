@@ -49,11 +49,15 @@ class MysqlDatabase extends Database{
         return $datas;
     }
 
-    public function prepare($statement, $attributes, $classname, $one = false)
+    public function prepare($statement, $attributes, $classname = null, $one = false)
     {
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
-        $req->setFetchMode(PDO::FETCH_CLASS, $classname);
+        if ($classname === null) {
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        } else {
+            $req->setFetchMode(PDO::FETCH_CLASS, $classname);
+        }
         if($one) {
             $datas = $req->fetch();
         } else {
