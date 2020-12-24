@@ -12,5 +12,14 @@ class DbAuth {
         $this->db = $db;
     }
 
-
+    /**
+     * @param $username
+     * @param $password
+     * @return boolean
+     */
+    public function login($username, $password)
+    {
+        $user = $this->db->prepare('SELECT * FROM users WHERE username = ?', [$username], null, true);
+        var_dump($user);
+    }
 }
