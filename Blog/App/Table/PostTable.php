@@ -22,7 +22,8 @@ class PostTable extends Table {
 
     /**
      * Recupere un article en liant la catégorie associée
-     * @return array
+     * @param $id int
+     * @return \App\Entity\PostEntity
      */
     public function find($id)
     {
@@ -31,5 +32,20 @@ class PostTable extends Table {
         FROM articles
         LEFT JOIN categories ON category_id = categories.id
         WHERE articles.id = ?", [$id], true);
+    }
+
+        /**
+     * Recupere les derniers articles de la catégorie demandée
+     * @param $category_id int
+     * @return array
+     */
+    public function lastByCategory($category_id)
+    {
+        return $this->query("
+        SELECT articles.id, articles.titre, articles.contenu, articles.date, categories.titre as categorie
+        FROM articles
+        LEFT JOIN categories ON category_id = categories.id
+        WHERE articles.category_id = ?
+        ORDER BY articles.date DESC", [$category_id]);
     }
 }
