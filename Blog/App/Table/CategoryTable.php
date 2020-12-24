@@ -3,6 +3,6 @@ namespace App\Table;
 
 use Core\Table\Table;
 
-class PostsTable extends Table {
+class CategoryTable extends Table {
 
 }

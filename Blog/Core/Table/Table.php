@@ -23,4 +23,22 @@ class Table {
     {
         return $this->db->query('SELECT * FROM articles');
     }
+
+    public function query($statement, $attributes = null, $one = false)
+    {
+        if ($attributes) {
+            return $this->db->prepare(
+                $statement,
+                $attributes,
+                str_replace('Table', 'Entity', get_class($this)),
+                $one
+            );
+        } else {
+            return $this->db->query(
+                $statement,
+                str_replace('Table', 'Entity', get_class($this)),
+                $one
+            );
+        }
+    }
 }
