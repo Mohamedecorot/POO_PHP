@@ -31,7 +31,7 @@
   </div>
   <div class="col-sm-4">
     <ul>
-      <?php foreach(\App\Table\Categorie::all() as $categorie): ?>
+      <?php foreach(App::getInstance()->getTable('Category')->all() as $categorie): ?>
         <li><a href="<?= $categorie->url; ?>"><?= $categorie->titre; ?></a></li>
       <?php endforeach; ?>
     </ul>
