@@ -22,4 +22,9 @@ class DbAuth {
         $user = $this->db->prepare('SELECT * FROM users WHERE username = ?', [$username], null, true);
         var_dump($user);
     }
+
+    public function logged()
+    {
+        return $_SESSION['auth'];
+    }
 }
