@@ -35,4 +35,11 @@ class DBAuth {
     {
         return isset($_SESSION['auth']);
     }
+
+    public function getUserId(){
+        if($this->logged()){
+            return $_SESSION['auth'];
+        }
+        return false;
+    }
 }
