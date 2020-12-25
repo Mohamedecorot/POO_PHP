@@ -13,7 +13,7 @@ if(isset($_GET['p'])){
 }
 // Auth
 $app = App::getInstance();
-$auth = new DbAuth($app->getDb());
+$auth = new DBAuth($app->getDb());
 if(!$auth->logged()){
     $app->forbidden();
 }

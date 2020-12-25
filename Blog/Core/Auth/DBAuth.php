@@ -2,12 +2,13 @@
 namespace Core\Auth;
 
 use Core\Database\Database;
+use Core\Database\MysqlDatabase;
 
-class DbAuth {
+class DBAuth {
 
     private $db;
 
-    public function __construct(Database $db)
+    public function __construct(MysqlDatabase $db)
     {
         $this->db = $db;
     }
