@@ -43,12 +43,6 @@ class App{
         return $this->db_instance;
     }
 
-    public static function notFound()
-    {
-        header("HTTP/1.0 404 Not Found");
-        header('Location:index.php?p=404');
-    }
-
     public static function getTitle()
     {
         return self::$title;
@@ -57,5 +51,17 @@ class App{
     public static function setTitle($title)
     {
         self::$title = $title;
+    }
+
+    public function forbidden()
+    {
+        header('HTTP/1.0 403 Forbidden');
+        die('Acces interdit');
+    }
+
+    public function notFound()
+    {
+        header('HTTP/1.0 404 Not Found');
+        die('Page introuvable');
     }
 }
