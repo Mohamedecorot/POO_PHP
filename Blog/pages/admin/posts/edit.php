@@ -1,5 +1,6 @@
 <?php
-$form = new \Core\HTML\BootstrapForm($_POST);
+$post = App::getInstance()->getTable('Post')->find($_GET['id']);
+$form = new \Core\HTML\BootstrapForm($post);
 ?>
 
 <form method="post">
