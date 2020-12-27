@@ -38,6 +38,17 @@ class Table {
         return $this->query("UPDATE {$this->table} SET $sql_part WHERE id = ?", $attributes, true);
     }
 
+    public function create($fields)
+    {
+        $sql_part = [];
+        foreach($fields as $k => $v){
+            $sql_part[] = "$k = ?";
+            $attributes[] = $v;
+        }
+        $sql_part = implode(', ', $sql_part);
+        return $this->query("INSERT INTO {$this->table} SET $sql_part", $attributes, true);
+    }
+
     public function extract($key, $value)
     {
         $records = $this->all();
