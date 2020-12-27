@@ -34,7 +34,7 @@ class Table {
         }
         $attributes[] = $id;
         $sql_part = implode(', ', $sql_part);
-        die();
+        //die();
         return $this->query("UPDATE {$this->table} SET $sql_part WHERE id = ?", $attributes, true);
     }
 

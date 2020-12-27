@@ -1,11 +1,10 @@
 <?php
 $postTable = App::getInstance()->getTable('Post');
 if(!empty($_POST)){
-    $result = $postTable->update($_GET['id'], [
+    $postTable->update($_GET['id'], [
         'titre' => $_POST['titre'],
         'contenu' => $_POST['contenu']
     ]);
-    var_dump($result);
 }
 $post = $postTable->find($_GET['id']);
 $form = new \Core\HTML\BootstrapForm($post);
