@@ -42,7 +42,7 @@ class Table {
     {
         $records = $this->all();
         $return = [];
-        foreach($records as $k => $v){
+        foreach($records as $v){
             $return[$v->$key] = $v->$value;
         }
         return $return;
