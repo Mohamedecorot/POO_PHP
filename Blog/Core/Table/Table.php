@@ -32,7 +32,7 @@ class Table {
             $sql_part[] = "$k = ?";
             $attributes[] = $v;
         }
-
+        $attributes[] = $id;
         $sql_part = implode(', ', $sql_part);
         die();
         return $this->query("UPDATE {$this->table} SET $sql_part WHERE id = ?", $attributes, true);

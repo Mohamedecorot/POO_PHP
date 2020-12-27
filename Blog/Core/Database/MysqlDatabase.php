@@ -36,6 +36,13 @@ class MysqlDatabase extends Database{
     {
         //pour récuperer les articles
         $req = $this->getPDO()->query($statement);
+        if(
+            strpos($statement, 'UPDATE') === 0 ||
+            strpos($statement, 'INSERT') === 0 ||
+            strpos($statement, 'DELETE') === 0
+        ) {
+            return $req;
+        }
         if ($classname === null) {
             $req->setFetchMode(PDO::FETCH_OBJ);
         } else {
@@ -53,7 +60,13 @@ class MysqlDatabase extends Database{
     {
         $req = $this->getPDO()->prepare($statement);
         $res = $req->execute($attributes);
-
+        if(
+            strpos($statement, 'UPDATE') === 0 ||
+            strpos($statement, 'INSERT') === 0 ||
+            strpos($statement, 'DELETE') === 0
+        ) {
+            return $res;
+        }
         if ($classname === null) {
             $req->setFetchMode(PDO::FETCH_OBJ);
         } else {
