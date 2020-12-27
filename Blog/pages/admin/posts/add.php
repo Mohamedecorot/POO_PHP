@@ -7,9 +7,7 @@ if(!empty($_POST)){
         'category_id' => $_POST['category_id']
     ]);
     if($result) {
-        ?>
-        <div class="alert alert-success">L'article a bien été modifié</div>
-        <?php
+        header('Location: admin.php?p=posts.edit&id=' . App::getInstance()->getDb()->lastInsertId());
     }
 }
 $categories = App::getInstance()->getTable('Category')->extract('id', 'titre');

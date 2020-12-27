@@ -2,13 +2,14 @@
 namespace Core\Table;
 
 use Core\Database\Database;
+use Core\Database\MysqlDatabase;
 
 class Table {
 
     protected $table;
     protected $db;
 
-    public function __construct(Database $db)
+    public function __construct(MysqlDatabase $db)
     {
         $this->db = $db;
         if(is_null($this->table)){
