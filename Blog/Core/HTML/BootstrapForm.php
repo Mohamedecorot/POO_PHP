@@ -32,6 +32,15 @@ class BootstrapForm extends Form
         return $this->surround($label . $input);
     }
 
+    public function select($nom, $label, $option)
+    {
+        $label = '<label>' . $label . '</label>';
+        $input = '<select class="form-control" name=' . $name . '">';
+        foreach($options as $k => $v){
+            $input .= "<option value '$k'>$v</option>";
+        }
+    }
+
         /**
      * @return string
      */

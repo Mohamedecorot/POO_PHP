@@ -38,6 +38,8 @@ class Table {
         return $this->query("UPDATE {$this->table} SET $sql_part WHERE id = ?", $attributes, true);
     }
 
+
+
     public function all()
     {
         return $this->query('SELECT * FROM '. $this->table);
