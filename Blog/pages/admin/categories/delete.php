@@ -1,6 +1,6 @@
 <?php
-$postTable = App::getInstance()->getTable('Post');
+$table = App::getInstance()->getTable('Category');
 if(!empty($_POST)) {
-    $result = $postTable->delete($_POST['id']);
-    header('Location: admin.php');
+    $result = $table->delete($_POST['id']);
+    header('Location: admin.php?p=categories.index');
 }
