@@ -50,6 +50,7 @@ class Table {
         return $this->query("INSERT INTO {$this->table} SET $sql_part", $attributes, true);
     }
 
+
     public function extract($key, $value)
     {
         $records = $this->all();
