@@ -1,29 +1,37 @@
 <?php
 namespace App\Controller;
 
-use App;
-use Core\Controller\Controller;
 
 class PostsController extends AppController{
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadModel('Post');
+        $this->loadModel('Category');
+    }
+
     public function index()
     {
-        $posts = App::getInstance()->getTable('Post')->last();
-        $categories = App::getInstance()->getTable('Category')->all();
+        $posts = $this->Post->last();
+        $categories = $this->Category->all();
         $this->render('posts.index', compact('posts', 'categories'));
     }
 
-    public function categories()
+    public function category()
     {
+        $categorie = $this->Category->find($_GET['id']);
+        if($categorie === false) {
+            $this->notFound();
+        }
 
+        $articles = $this->Post->lastByCategory($_GET['id']);
+        $categories = $this->Category->all();
+        $this->render('posts.category', compact('articles', 'categories', 'categorie'));
+        //var_dump($categorie);
     }
 
     public function show()
-    {
-
-    }
-
-    public function category()
     {
 
     }
