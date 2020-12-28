@@ -5,7 +5,7 @@ $categories = App::getInstance()->getTable('Category')->all();
 <h1>Administation des catégories</h1>
 
 <p>
-    <a href="?p=categories.add" class="btn btn-success">Ajouter un article</a>
+    <a href="?p=categories.add" class="btn btn-success">Ajouter une catégorie</a>
 </p>
 
 <table class="table">

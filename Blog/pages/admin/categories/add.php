@@ -1,22 +1,17 @@
 <?php
-$postTable = App::getInstance()->getTable('Post');
+$table = App::getInstance()->getTable('Category');
 if(!empty($_POST)){
-    $result = $postTable->create([
-        'titre' => $_POST['titre'],
-        'contenu' => $_POST['contenu'],
-        'category_id' => $_POST['category_id']
+    $result = $table->create([
+        'titre' => $_POST['titre']
     ]);
     if($result) {
-        header('Location: admin.php?p=posts.edit&id=' . App::getInstance()->getDb()->lastInsertId());
+        header('Location: admin.php?p=categories.index');
     }
 }
-$categories = App::getInstance()->getTable('Category')->extract('id', 'titre');
 $form = new \Core\HTML\BootstrapForm($_POST);
 ?>
 
 <form method="post">
-    <?= $form->input('titre', 'Titre de l\'article'); ?>
-    <?= $form->input('contenu', 'Contenu', ['type' => 'textarea']); ?>
-    <?= $form->select('category_id', 'Catégorie', $categories); ?>
+    <?= $form->input('titre', 'Titre de la catégorie'); ?>
     <button class="btn btn-primary">Sauvegarder</button>
 </form>
