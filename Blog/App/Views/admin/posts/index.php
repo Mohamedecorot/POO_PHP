@@ -1,7 +1,3 @@
-<?php
-$posts = App::getInstance()->getTable('Post')->all();
-?>
-
 <h1>Administation des articles</h1>
 
 <p>
