@@ -1,11 +1,7 @@
-<?php
-$categories = App::getInstance()->getTable('Category')->all();
-?>
-
 <h1>Administation des catégories</h1>
 
 <p>
-    <a href="?p=categories.add" class="btn btn-success">Ajouter une catégorie</a>
+    <a href="?p=admin.categories.add" class="btn btn-success">Ajouter une catégorie</a>
 </p>
 
 <table class="table">
@@ -17,7 +13,7 @@ $categories = App::getInstance()->getTable('Category')->all();
         </tr>
     </thead>
     <tbody>
-        <?php foreach($categories as $category): ?>
+        <?php foreach($items as $category): ?>
             <tr>
                 <td><?= $category->id; ?></td>
                 <td><?= $category->titre; ?></td>
