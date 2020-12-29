@@ -43,5 +43,11 @@ class PostsController extends \App\Controller\AppController{
         $this->render('admin.posts.edit', compact('form'));
     }
 
-
+    public function delete()
+    {
+        if(!empty($_POST)) {
+            $result = $this->Category->delete($_POST['id']);
+            return $this->index();
+        }
+    }
 }
