@@ -28,17 +28,32 @@ class PostsController extends \App\Controller\AppController{
                 'category_id' => $_POST['category_id']
             ]);
             if($result) {
-                header('Location: admin.php?p=admin.posts.edit&id=' . App::getInstance()->getDb()->lastInsertId());
+                return $this->index();
             }
         }
         $this->loadModel('Category');
         $categories = $this->Category->extract('id', 'titre');
         $form = new BootstrapForm($_POST);
+        $this->render('admin.posts.edit', compact('categories', 'form'));
     }
 
     public function edit()
     {
-
+        if(!empty($_POST)){
+            $result = $this->Post->update($_GET['id'], [
+                'titre' => $_POST['titre'],
+                'contenu' => $_POST['contenu'],
+                'category_id' => $_POST['category_id']
+            ]);
+            if($result) {
+                return $this->index();
+            }
+        }
+        $post = $this->Post->find($_GET['id']);
+        $this->loadModel('Category');
+        $categories = $this->Category->extract('id', 'titre');
+        $form = new BootstrapForm($post);
+        $this->render('admin.posts.edit', compact('categories', 'form'));
     }
 
     public function delete()
