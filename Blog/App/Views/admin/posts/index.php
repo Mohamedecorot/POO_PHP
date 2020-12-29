@@ -1,7 +1,7 @@
 <h1>Administation des articles</h1>
 
 <p>
-    <a href="?p=posts.add" class="btn btn-success">Ajouter un article</a>
+    <a href="?p=admin.posts.edit" class="btn btn-success">Ajouter un article</a>
 </p>
 
 <table class="table">

@@ -5,7 +5,7 @@ use App;
 use Core\Html\BootstrapForm;
 
 
-class PostsController extends \App\Controller\AppController{
+class CategoriesController extends \App\Controller\AppController{
 
     public function __construct()
     {
@@ -16,7 +16,7 @@ class PostsController extends \App\Controller\AppController{
     public function index()
     {
         $items = $this->Category->all();
-        $this->render('admin.posts.index', compact('items'));
+        $this->render('admin.categories.index', compact('items'));
     }
 
     public function add()
@@ -27,7 +27,7 @@ class PostsController extends \App\Controller\AppController{
             ]);
             return $this->index();
         }
-        $this->render('admin.posts.edit', compact('form'));
+        $this->render('admin.categories.edit', compact('form'));
     }
 
     public function edit()
@@ -40,7 +40,7 @@ class PostsController extends \App\Controller\AppController{
         }
         $category = $this->Category->find($_GET['id']);
         $form = new BootstrapForm($category);
-        $this->render('admin.posts.edit', compact('form'));
+        $this->render('admin.categories.edit', compact('form'));
     }
 
     public function delete()
