@@ -17,6 +17,12 @@ class DemoController extends AppController{
             ->from('article', 'Post')
             ->where('Post.category_id = 1')
             ->where('Post.date > NOW()');
+        //Equivalent en facade à ça :
+        require ROOT . '/Query.php';
+        echo \Query::select('id', 'titre', 'contenu')
+            ->from('article', 'Post')
+            ->where('Post.category_id = 1')
+            ->where('Post.date > NOW()');
     }
 
 }
