@@ -58,6 +58,9 @@ class PostsController extends \App\Controller\AppController{
 
     public function delete()
     {
-
+        if(!empty($_POST)) {
+            $result = $this->Post->delete($_POST['id']);
+            return $this->index();
+        }
     }
 }
