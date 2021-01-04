@@ -1,8 +1,13 @@
 <?php
-describe(\Event\Emitter::class, function () {
 
-    it('should 1=1', function () {
-        expect(1)->toBe(1);
+use Event\Emitter;
+
+describe(Emitter::class, function () {
+
+    it('should be a singleton', function () {
+        $instance = Emitter::getInstance();
+        expect($instance)->toBeAnInstanceOf(Emitter::class);
+        expect($instance)->toBe(Emitter::getInstance());
     });
 
 
