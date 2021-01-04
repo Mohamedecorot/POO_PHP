@@ -38,4 +38,14 @@ describe('::on', function () {
         $this->emitter->emit('Comment.created', $comment);
     });
 
+    it('should trigger events in the right order', function () {
+        $listener = Double::instance();
+
+        expect($listener)->toReceive('onNewComment2')->once()->ordered;
+        expect($listener)->toReceive('onNewComment')->once()->ordered;
+
+        $this->emitter->on('Comment.created', [$listener, 'onNewComment'], 1);
+        $this->emitter->on('Comment.created', [$listener, 'onNewComment2'], 200);
+        $this->emitter->emit('Comment.created');
+    });
 });

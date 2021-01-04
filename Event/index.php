@@ -6,9 +6,6 @@ $emitter->on('Comment.created', function ($firstname, $lastname) {
     echo $firstname . ' ' . $lastname . ' a posté un commentaire';
 }, 1);
 
-$emitter->on('Comment.created', function ($firstname, $lastname) {
-    echo $firstname . ' ' . $lastname . ' a posté un commentaire';
-}, 100);
 
 $emitter->emit('Comment.created', 'John', 'Doe');
 
