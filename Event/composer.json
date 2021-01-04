@@ -5,5 +5,8 @@
             "Event\\": "src"
         }
     },
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "kahlan/kahlan": "^5.0"
+    }
 }
