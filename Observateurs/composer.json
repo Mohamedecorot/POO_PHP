@@ -1,0 +1,9 @@
+{
+    "name": "event/graph",
+    "autoload": {
+        "psr-4": {
+            "Event\\": "src"
+        }
+    },
+    "require": {}
+}
