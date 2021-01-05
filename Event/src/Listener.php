@@ -67,7 +67,7 @@ class Listener {
      */
     public function stopPropagation (): Listener
     {
-        $this->stopPropagation = false;
+        $this->stopPropagation = true;
         return $this;
     }
 }

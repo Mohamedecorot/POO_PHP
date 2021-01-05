@@ -35,7 +35,9 @@ class Emitter {
         if ($this->hasListener($event)) {
             foreach ($this->listeners[$event] as $listener) {
                 $listener->handle($args);
-                $this->sortListeners($event);
+                if ($listener->stopPropagation) {
+                    break;
+                }
             }
         }
     }
