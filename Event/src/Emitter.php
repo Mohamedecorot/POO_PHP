@@ -55,6 +55,7 @@ class Emitter {
         if (!$this->hasListener($event)) {
             $this->listeners[$event] = [];
         }
+        $this->checkDoubleCallableForEvent($event, $callable);
         $listener = new Listener($callable, $priority);
         $this->listeners[$event][] = $listener;
         return $listener;
