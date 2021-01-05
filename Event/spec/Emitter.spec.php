@@ -56,9 +56,22 @@ describe('::on', function () {
 
             expect($listener)->toReceive('onNewComment')->once()->with($comment);
 
-            $this->emitter->once('Comment.created', [$listener, 'onNewComment']);
+            $this->emitter->on('Comment.created', [$listener, 'onNewComment'])->once();
             $this->emitter->emit('Comment.created', $comment);
             $this->emitter->emit('Comment.created', $comment);
+        });
+    });
+    describe('::stopPropagation', function () {
+
+        it('should stop next listener', function () {
+            $listener = Double::instance();
+
+            expect($listener)->toReceive('onNewComment')->once();
+            expect($listener)->toReceive('onNewComment2')->times(0);
+
+            $this->emitter->on('Comment.created', [$listener, 'onNewComment']->stopPropagation());
+            $this->emitter->on('Comment.created', [$listener, 'onNewComment2']);
+            $this->emitter->emit('Comment.created');
         });
     });
 });
