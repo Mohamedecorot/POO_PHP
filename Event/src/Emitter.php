@@ -60,6 +60,14 @@ class Emitter {
         return $listener;
     }
 
+    /**
+     * Permet d'écouter un évènement et de lancer le listener une seule fois
+     *
+     * @param string $event
+     * @param callable $callable
+     * @param int $priority
+     * @return Listener
+     */
     public function once(string $event, callable $callable, int $priority = 0): Listener
     {
         return $this->on($event, $callable, $priority)->once();
@@ -74,5 +82,15 @@ class Emitter {
         uasort($this->listeners[$event], function ($a, $b) {
             return $a->priority < $b->priority;
         });
+    }
+
+    private function checkDoubleCallableForEvent (string $event, callable $callable): bool
+    {
+        foreach ($this->listerners[$event] as $listener) {
+            if ($listener->callback === $callable) {
+                throw new DoubleEventException();
+            }
+        }
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Event\DoubleEventException;
 use Event\Emitter;
 use Kahlan\Plugin\Double;
 
@@ -58,6 +59,16 @@ describe('::on', function () {
         $this->emitter->on('Comment.created', [$listener, 'onNewComment'])->ordered;
         $this->emitter->on('Comment.created', [$listener, 'onNewComment2'])->ordered;
         $this->emitter->emit('Comment.created');
+    });
+
+    it('should prevent the same listener twice', function () {
+        $listener = Double::instance();
+
+        $closure = function () use ($listener) {
+            $this->emitter->on('Comment.created', [$listener, 'onNewComment'])->ordered;
+            $this->emitter->on('Comment.created', [$listener, 'onNewComment'])->ordered;
+        };
+        expect($closure)->toThrow(new DoubleEventException());
     });
 });
 

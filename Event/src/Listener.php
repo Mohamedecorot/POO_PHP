@@ -6,7 +6,7 @@ class Listener {
     /**
      * @var callable
      */
-    private $callback;
+    public $callback;
 
     /**
      * @var int
