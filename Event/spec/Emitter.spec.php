@@ -67,7 +67,7 @@ describe('::on', function () {
             $listener = Double::instance();
 
             expect($listener)->toReceive('onNewComment')->once();
-            expect($listener)->toReceive('onNewComment2')->times(0);
+            expect($listener)->not->toReceive('onNewComment2')->once();
 
             $this->emitter->on('Comment.created', [$listener, 'onNewComment']->stopPropagation());
             $this->emitter->on('Comment.created', [$listener, 'onNewComment2']);

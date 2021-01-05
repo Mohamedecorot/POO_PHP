@@ -21,6 +21,13 @@ class Listener {
     private $once = false;
 
     /**
+     * Permet de stopper les évenements parents
+     *
+     * @bools
+     */
+    public $stopPropagation = false;
+
+    /**
      * Permet de savoir combien de fois le listener a été appellé
      *
      * @bools
@@ -50,6 +57,17 @@ class Listener {
     public function once(): Listener
     {
         $this->once = true;
+        return $this;
+    }
+
+    /**
+     *  Permet de stopper l'éxécution des évènements suivants
+     *
+     * @return Listener
+     */
+    public function stopPropagation (): Listener
+    {
+        $this->stopPropagation = false;
         return $this;
     }
 }
