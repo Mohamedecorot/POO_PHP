@@ -58,6 +58,11 @@ class Emitter {
         return $listener;
     }
 
+    public function once(string $event, callable $callable, int $priority = 0): Listener
+    {
+
+    }
+
     private function hasListener (string $event): bool {
         return array_key_exists($event, $this->listeners);
     }

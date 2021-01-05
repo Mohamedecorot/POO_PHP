@@ -56,8 +56,7 @@ describe('::on', function () {
 
             expect($listener)->toReceive('onNewComment')->once()->with($comment);
 
-            $this->emitter->on('Comment.created', [$listener, 'onNewComment']);
-            $this->emitter->emit('Comment.created', $comment);
+            $this->emitter->once('Comment.created', [$listener, 'onNewComment']);
             $this->emitter->emit('Comment.created', $comment);
             $this->emitter->emit('Comment.created', $comment);
         });
