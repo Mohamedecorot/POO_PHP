@@ -60,7 +60,7 @@ class Emitter {
 
     public function once(string $event, callable $callable, int $priority = 0): Listener
     {
-
+        return $this->on($event, $callable, $priority)->once();
     }
 
     private function hasListener (string $event): bool {

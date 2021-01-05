@@ -20,6 +20,13 @@ class Listener {
      */
     private $once = false;
 
+    /**
+     * Permet de savoir combien de fois le listener a été appellé
+     *
+     * @bools
+     */
+    private $calls = 0;
+
     public function __construct(callable $callback, int $priority)
     {
         $this->callback = $callback;
@@ -28,6 +35,10 @@ class Listener {
 
     public function handle(array $args)
     {
+        if($this->once && $this->calls > 0) {
+            return null;
+        }
+        $this->calls ++;
         return call_user_func_array($this->callback, $args);
     }
 
