@@ -74,6 +74,19 @@ class Emitter {
         return $this->on($event, $callable, $priority)->once();
     }
 
+    /**
+     * Permet d'ajouter un subscriber qui va écouter plusieurs évènements
+     *
+     * @param SubscriberInterface $subscriber
+     */
+    public function addSubscriber(SubscriberInterface $subscriber)
+    {
+        $events = $subscriber->getEvents();
+        foreach($events as $event => $method) {
+            $this->on($event, [$subscriber, $method]);
+        }
+    }
+
     private function hasListener (string $event): bool {
         return array_key_exists($event, $this->listeners);
     }
