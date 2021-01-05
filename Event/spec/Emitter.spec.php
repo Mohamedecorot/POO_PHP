@@ -48,4 +48,18 @@ describe('::on', function () {
         $this->emitter->on('Comment.created', [$listener, 'onNewComment2'], 200);
         $this->emitter->emit('Comment.created');
     });
+    describe('::once', function () {
+
+        it('should trigger event once', function () {
+            $listener = Double::instance();
+            $comment = ['name' => 'John'];
+
+            expect($listener)->toReceive('onNewComment')->once()->with($comment);
+
+            $this->emitter->on('Comment.created', [$listener, 'onNewComment']);
+            $this->emitter->emit('Comment.created', $comment);
+            $this->emitter->emit('Comment.created', $comment);
+            $this->emitter->emit('Comment.created', $comment);
+        });
+    });
 });
