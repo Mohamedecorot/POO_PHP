@@ -1,13 +1,15 @@
 <?php
 namespace Event;
 
+use Event\Listener;
+
 class Emitter {
 
     private static $_instance;
     /**
      * Enregistre la liste des écouteurs
      *
-     * @var array
+     * @var Listener[][]
      */
     private $listeners = [];
 
@@ -32,7 +34,8 @@ class Emitter {
     {
         if ($this->hasListener($event)) {
             foreach ($this->listeners[$event] as $listener) {
-                call_user_func_array($listener, $args);
+                $listener->handle($args);
+                $this->sortListeners($event);
             }
         }
     }
@@ -42,15 +45,27 @@ class Emitter {
      *
      * @param string $event Nom de l'événement
      * @param callable $callable
+     * @param int $priority
+     * @return Listener
      */
-    public function on(string $event, callable $callable) {
+    public function on(string $event, callable $callable, int $priority = 0): Listener
+    {
         if (!$this->hasListener($event)) {
             $this->listeners[$event] = [];
         }
-        $this->listeners[$event][] = $callable;
+        $listener = new Listener($callable, $priority);
+        $this->listeners[$event][] = $listener;
+        return $listener;
     }
 
     private function hasListener (string $event): bool {
         return array_key_exists($event, $this->listeners);
+    }
+
+    private function sortListeners($event)
+    {
+        uasort($this->listeners[$event], function ($a, $b) {
+            return $a->priority < $b->priority;
+        });
     }
 }
